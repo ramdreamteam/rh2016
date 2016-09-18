@@ -3,6 +3,7 @@ const capOneApi = "http://api.reimaginebanking.com/enterprise";
 const capOneKey = "824c24c68d81a8c3cfae36882a5ba1a9" //HERE YOU GO HACKERS
 const sampleUserId = "56c66be5a73e492741507272";
 
+
 app.config(function($routeProvider) {
   $routeProvider
   .when('/dashboard', {
@@ -21,6 +22,10 @@ app.config(function($routeProvider) {
     templateUrl : 'profile.html',
     controller  : 'profileController'
   })
+  .when('/notifications', {
+    templateUrl : 'notifications.html',
+    controller  : 'notificationsController'
+  })
   .otherwise({redirectTo: '/dashboard'});
 });
 
@@ -30,16 +35,14 @@ app.controller('DashboardController', function($scope) {
 
 app.controller('efcController', function($scope) {
   $scope.message = 'Hello from efc';
+  $scope.sar = sarObject;
+  $scope.totalLoan = sarObject.loans.direct + sarObject.loans.subsidized + sarObject.loans.unsubsidized + sarObject.loans["combined loans"];
+
 });
 
 app.controller('repaymentController', function($scope) {
-  $scope.loan = 15000;
-  // $scope.duration = 4;
-  $scope.interest= 2;
-  // $scope.payment= function() { 
-  //   return (($scope.interest/1200.0*$scope.loan)/
-  //         (1.0-Math.pow(1.0+$scope.interest/1200.00, -1.0*$scope.duration*12.0))).toFixed(2);	
-  // };
+  $scope.loan = 15000;  
+  $scope.interest= 2;  
   $scope.payment = 200;    
   $scope.duration = function() {
     var calc = (Math.log($scope.payment) - Math.log($scope.payment - $scope.loan * $scope.interest / 100.0 / 12)) /
@@ -69,6 +72,17 @@ app.controller('profileController', function($scope, $http) {
     });
 });
 
+app.controller('notificationsController', function($scope, $http) {
+
+});
+
+app.controller('navController', function($scope, $location) {
+    $scope.isActive = function(route) {
+        return route === $location.path();
+    }
+    $scope.testVar = $location.path();
+});
+
 var sarObject = {
   "ombNo" : "1845-0001",
   "EFC": 1250,
@@ -81,6 +95,8 @@ var sarObject = {
   "dob": "07/04/1992",
   "phone": "317-555-2190",
   "email": "testUser@gmail.com",
-  "currentYear": "Sophomore"
+  "currentYear": "Sophomore",
+  "agi": 4378.01,
+  "formType": 1040
 };
 
