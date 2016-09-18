@@ -13,9 +13,9 @@ var user = {
   "last_name": "Williams",
   "sar": {
     "ombNo" : 1845-0001,
-    "EFC": 1250,
+    "EFC": 2500,
     "loans": {
-      "direct": 1000,
+      "direct": 2000,
       "subsidized": 1000,
       "unsubsidized": 1000,
       "combined loans": 1000

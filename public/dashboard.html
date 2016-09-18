@@ -4,10 +4,10 @@
             <div class="card" height="auto" width ="350">
                 <div class="header">
                     <h4 class="title">Loan Status: <h7 id="percent"><b>34.7%</b></h7></h4>
-                    
                 </div>
                 <div class="content">
                 <div class="col-md-12"> 
+
                     <canvas id="canvas" class="center-block" width="260" height= "360"  position="absolute"></canvas>
                 </div>
 
@@ -18,7 +18,9 @@
 
 
                     <div id="loanpaidlabel" class="footer">
+                    <br>
                         <h5 > $8,050 paid of $23,200</h5>
+
                         <hr>
                         <div class="stats">
                             <i class="fa fa-clock-o"></i> Keep up the good work!
@@ -31,18 +33,18 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Previous Payments</h4>
+                    <h2 class="title">Previous Payments</h4>
                     <p class="category">Amount of Money Paid Back per Month</p>
                 </div>
                 
                 <div class="col-md-12"> 
-                    <canvas id="clients" class="center-block" width="600" height="400"></canvas>
+                    <canvas id="client" class="center-block" width="600" height="350"></canvas>
                 </div>
                     <div class="footer">
                         </br>
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-history"></i> Next Payment due Wednesday, February 15th 2017
+                            <i class="fa fa-history"></i> Last Payment was Wednesday, January 15th 2017
                         </div>
                     </div>
                 </div>
@@ -81,7 +83,8 @@ $(document).ready(function () {
     animateRotate: true,
     animateScale: false,
     percentageInnerCutout: 30,
-    tooltipTemplate: "<%= value %>%"
+    multiTooltipTemplate: "<%= value %>",
+    //tooltipTemplate: "<%= value %>%"
 }
 
     var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(data,options);
@@ -90,16 +93,22 @@ $(document).ready(function () {
     labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
     datasets: [
         {
-            label: '2010 customers #',
+            
             fillColor: '#382765',
-            data: [600, 200, 500, 900, 50, 200, 200, 400, 500, 400, 800,300]
+            data: [600, 200, 500, 900, 50, 200, 200, 400, 500, 400, 800,300],
+
+
         }
         
     ]
     };
 
-    var context = document.getElementById('clients').getContext('2d');
-    var clientsChart = new Chart(context).Bar(barData);
+    var ctx = document.getElementById("client").getContext("2d");
+    window.myLine = new Chart(ctx).Bar(barData, {
+        responsive: true,
+        showTooltips: true,
+        multiTooltipTemplate: "<%= data %>",
+    });
 
 });
 </script>
