@@ -20,8 +20,8 @@ var user = {
       "unsubsidized": 1000,
       "combined loans": 1000
     },
-    "dob": 07/04/1992,
-    "phone": 317-555-2190,
+    "dob": "07/04/1992",
+    "phone": "317-555-2190",
     "email": "testUser@gmail.com",
     "currentYear": "Sophomore"
   }

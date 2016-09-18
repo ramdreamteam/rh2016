@@ -33,7 +33,27 @@ app.controller('efcController', function($scope) {
 });
 
 app.controller('repaymentController', function($scope) {
-  $scope.message = 'Hello from repayment';
+  $scope.loan = 15000;
+  // $scope.duration = 4;
+  $scope.interest= 2;
+  // $scope.payment= function() { 
+  //   return (($scope.interest/1200.0*$scope.loan)/
+  //         (1.0-Math.pow(1.0+$scope.interest/1200.00, -1.0*$scope.duration*12.0))).toFixed(2);	
+  // };
+  $scope.payment = 200;    
+  $scope.duration = function() {
+    var calc = (Math.log($scope.payment) - Math.log($scope.payment - $scope.loan * $scope.interest / 100.0 / 12)) /
+            Math.log(1 + $scope.interest / 100.0 / 12);
+    if (isNaN(calc)) {
+      return "Impossible to pay off principal."
+    } else {
+      var years = Math.floor(calc / 12);
+      var months = Math.ceil(calc % 12);
+      var yearString = years == 1 ? years + " year" : years + " years";
+      var monthString = months == 1 ? months + " month" : months + " months";
+      return yearString + ", " + monthString;
+    }    
+  };	
 });
 
 app.controller('profileController', function($scope, $http) {
@@ -50,7 +70,7 @@ app.controller('profileController', function($scope, $http) {
 });
 
 var sarObject = {
-  "ombNo" : 1845-0001,
+  "ombNo" : "1845-0001",
   "EFC": 1250,
   "loans": {
     "direct": 1000,
@@ -58,8 +78,8 @@ var sarObject = {
     "unsubsidized": 1000,
     "combined loans": 1000
   },
-  "dob": 07/04/1992,
-  "phone": 317-555-2190,
+  "dob": "07/04/1992",
+  "phone": "317-555-2190",
   "email": "testUser@gmail.com",
   "currentYear": "Sophomore"
 };
