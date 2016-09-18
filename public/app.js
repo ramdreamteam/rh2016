@@ -30,6 +30,9 @@ app.controller('DashboardController', function($scope) {
 
 app.controller('efcController', function($scope) {
   $scope.message = 'Hello from efc';
+  $scope.sar = sarObject;
+  $scope.totalLoan = sarObject.loans.direct + sarObject.loans.subsidized + sarObject.loans.unsubsidized + sarObject.loans["combined loans"];
+
 });
 
 app.controller('repaymentController', function($scope) {
