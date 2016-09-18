@@ -34,6 +34,23 @@ $(document).ready(function(){
     }).on("blur", function(){
         $(this).parent(".input-group").removeClass("input-group-focus");
     });
+
+    // Loan Status Chart
+    var pieData = [
+        {
+          value: 35,
+          color:"#3F9F3F"
+        },
+        {
+          value : 100-35,
+          color : "#222"
+        }
+      ];
+
+    var myPie = new Chart(document
+        .getElementById("canvas")
+        //.getContext("2d")
+        ).Doughnut(pieData,{percentageInnerCutout : 80});
       
 });
 
