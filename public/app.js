@@ -24,16 +24,8 @@ app.config(function($routeProvider) {
   .otherwise({redirectTo: '/dashboard'});
 });
 
-app.controller('DashboardController', function($scope, $http) {
+app.controller('DashboardController', function($scope) {
   $scope.message = 'Hello from Dashbaord';
-
-  $http.get(capOneApi + "/customers/" + sampleUserId + "?key=" + capOneKey)    
-    .success(function(data) {
-      console.log(data);
-    })
-    .error(function(error) {
-      console.log(error);
-    });
 });
 
 app.controller('efcController', function($scope) {
@@ -44,23 +36,18 @@ app.controller('repaymentController', function($scope) {
   $scope.message = 'Hello from repayment';
 });
 
-app.controller('profileController', function($scope) {
+app.controller('profileController', function($scope, $http) {
   $scope.message = 'Hello from profile';
+  $scope.user = {};
+  $http.get(capOneApi + "/customers/" + sampleUserId + "?key=" + capOneKey)    
+    .success(function(data) {
+      data.sar = sarObject;
+      $scope.user = data;
+    })
+    .error(function(error) {
+      console.log(error);
+    });
 });
-
-    // nessie user
-    // {
-    //   "_id": "56c66be5a73e492741507272",
-    //   "address": {
-    //     "city": "Union",
-    //     "state": "Kentucky",
-    //     "street_name": "Lakeview Drive",
-    //     "street_number": "11028",
-    //     "zip": "41091"
-    //   },
-    //   "first_name": "Allison",
-    //   "last_name": "Williams"
-    // },
 
 var sarObject = {
   "ombNo" : 1845-0001,
