@@ -64,6 +64,13 @@ app.controller('profileController', function($scope, $http) {
     });
 });
 
+app.controller('navController', function($scope, $location) {
+    $scope.isActive = function(route) {
+        return route === $location.path();
+    }
+    $scope.testVar = $location.path();
+});
+
 var sarObject = {
   "ombNo" : "1845-0001",
   "EFC": 1250,
