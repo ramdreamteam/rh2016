@@ -33,13 +33,8 @@ app.controller('efcController', function($scope) {
 });
 
 app.controller('repaymentController', function($scope) {
-  $scope.loan = 15000;
-  // $scope.duration = 4;
-  $scope.interest= 2;
-  // $scope.payment= function() { 
-  //   return (($scope.interest/1200.0*$scope.loan)/
-  //         (1.0-Math.pow(1.0+$scope.interest/1200.00, -1.0*$scope.duration*12.0))).toFixed(2);	
-  // };
+  $scope.loan = 15000;  
+  $scope.interest= 2;  
   $scope.payment = 200;    
   $scope.duration = function() {
     var calc = (Math.log($scope.payment) - Math.log($scope.payment - $scope.loan * $scope.interest / 100.0 / 12)) /
