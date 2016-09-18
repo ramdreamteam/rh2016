@@ -3,6 +3,14 @@ const capOneApi = "http://api.reimaginebanking.com/enterprise";
 const capOneKey = "824c24c68d81a8c3cfae36882a5ba1a9" //HERE YOU GO HACKERS
 const sampleUserId = "56c66be5a73e492741507272";
 
+app.run(function ($rootScope) {
+    $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
+        var word = current.$$route.originalPath.slice(1);
+        $rootScope.active = word;
+        word = word.charAt(0).toUpperCase() + word.slice(1);        
+        angular.element(document.querySelector('#nav-title')).text(word);
+    });
+});
 
 app.config(function($routeProvider) {
   $routeProvider
