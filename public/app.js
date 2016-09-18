@@ -6,6 +6,7 @@ const sampleUserId = "56c66be5a73e492741507272";
 app.run(function ($rootScope) {
     $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
         var word = current.$$route.originalPath.slice(1);
+        $rootScope.active = word;
         word = word.charAt(0).toUpperCase() + word.slice(1);        
         angular.element(document.querySelector('#nav-title')).text(word);
     });
