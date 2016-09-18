@@ -17,6 +17,10 @@ app.config(function($routeProvider) {
     templateUrl : 'repayment.html',
     controller  : 'repaymentController'
   })
+  .when('/profile', {
+    templateUrl : 'profile.html',
+    controller  : 'profileController'
+  })
   .otherwise({redirectTo: '/dashboard'});
 });
 
@@ -38,6 +42,10 @@ app.controller('efcController', function($scope) {
 
 app.controller('repaymentController', function($scope) {
   $scope.message = 'Hello from repayment';
+});
+
+app.controller('profileController', function($scope) {
+  $scope.message = 'Hello from profile';
 });
 
     // nessie user
