@@ -96,9 +96,27 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Current Year</label>
+                                <label>Filing status</label>
                                 <div>
-                                    <p><strong>{{user.sar.currentYear}}</strong></p>
+                                    <a href="https://www.irs.gov" target="_blank"><p><strong>Needs to file.</strong></p></a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Adjusted Gross Income</label>
+                                <div>
+                                    <p>{{user.sar.agi}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Form type</label>
+                                <div>
+                                    <p>{{user.sar.formType}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Spouse's AGI</label>
+                                <div>
+                                    <p>N/A</p>
                                 </div>
                             </div>
                         </div>

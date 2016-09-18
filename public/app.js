@@ -3,6 +3,7 @@ const capOneApi = "http://api.reimaginebanking.com/enterprise";
 const capOneKey = "824c24c68d81a8c3cfae36882a5ba1a9" //HERE YOU GO HACKERS
 const sampleUserId = "56c66be5a73e492741507272";
 
+
 app.config(function($routeProvider) {
   $routeProvider
   .when('/dashboard', {
@@ -20,6 +21,10 @@ app.config(function($routeProvider) {
   .when('/profile', {
     templateUrl : 'profile.html',
     controller  : 'profileController'
+  })
+  .when('/notifications', {
+    templateUrl : 'notifications.html',
+    controller  : 'notificationsController'
   })
   .otherwise({redirectTo: '/dashboard'});
 });
@@ -64,6 +69,10 @@ app.controller('profileController', function($scope, $http) {
     });
 });
 
+app.controller('notificationsController', function($scope, $http) {
+
+});
+
 app.controller('navController', function($scope, $location) {
     $scope.isActive = function(route) {
         return route === $location.path();
@@ -83,6 +92,8 @@ var sarObject = {
   "dob": "07/04/1992",
   "phone": "317-555-2190",
   "email": "testUser@gmail.com",
-  "currentYear": "Sophomore"
+  "currentYear": "Sophomore",
+  "agi": 4378.01,
+  "formType": 1040
 };
 
