@@ -77,6 +77,8 @@ app.controller('profileController', function($scope, $http) {
     })
     .error(function(error) {
       console.log(error);
+      fallback.sar = sarObject;
+      $scope.user = fallback;
     });
 });
 
@@ -106,5 +108,18 @@ var sarObject = {
   "currentYear": "Sophomore",
   "agi": 4378.01,
   "formType": 1040
+};
+
+var fallback = {
+  "_id": "56c66be5a73e492741507272",
+  "address": {
+    "city": "Union",
+    "state": "Kentucky",
+    "street_name": "Lakeview Drive",
+    "street_number": "11028",
+    "zip": "41091"
+  },
+  "first_name": "Allison",
+  "last_name": "Williams"
 };
 
